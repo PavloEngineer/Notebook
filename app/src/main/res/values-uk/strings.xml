@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Нотатник</string>
+
+    <!-- Item note -->
+    <string name="label_title">Заголовок</string>
+    <string name="label_text">Текст</string>
+
+    <!-- Adding fragment -->
+    <string name="header_adding">Додати нотатку</string>
+    <string name="text_save">Зберегти</string>
+
+    <!-- Details fragment -->
+    <string name="header_details">Деталі</string>
+    <string name="text_delete">Видалити</string>
+    <string name="back_arrow">Back arrow</string>
+</resources>

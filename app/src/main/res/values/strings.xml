@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Notebook</string>
+
+    <!-- Item note -->
+    <string name="label_title">Title</string>
+    <string name="label_text">Text</string>
+
+    <!-- Adding fragment -->
+    <string name="header_adding">Add note</string>
+    <string name="text_save">Save</string>
+
+    <!-- Details fragment -->
+    <string name="header_details">Details</string>
+    <string name="text_delete">Delete</string>
+    <string name="back_arrow">Back arrow</string>
+</resources>

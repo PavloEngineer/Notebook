@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_note"
+    app:startDestination="@id/myNotesFragment">
+
+    <fragment
+        android:id="@+id/myNotesFragment"
+        android:name="com.example.notebook.view.fragments.my_notes.MyNotesFragment"
+        android:label="MyNotesFragment" >
+        <action
+            android:id="@+id/action_myNotesFragment_to_addingNoteFragment"
+            app:destination="@id/addingNoteFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_myNotesFragment_to_detailsNoteFragment"
+            app:destination="@id/detailsNoteFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/addingNoteFragment"
+        android:name="com.example.notebook.view.fragments.my_notes.adding_note.AddingNoteFragment"
+        android:label="AddingNoteFragment" >
+        <action
+            android:id="@+id/action_addingNoteFragment_to_myNotesFragment"
+            app:destination="@id/myNotesFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsNoteFragment"
+        android:name="com.example.notebook.view.fragments.my_notes.details_note.DetailsNoteFragment"
+        android:label="DetailsNoteFragment" >
+        <action
+            android:id="@+id/action_detailsNoteFragment_to_myNotesFragment"
+            app:destination="@id/myNotesFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <argument
+            android:name="note"
+            app:argType="com.example.notebook.data.entities.Note" />
+    </fragment>
+</navigation>

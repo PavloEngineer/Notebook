@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/photo_back">
+
+    <View
+        android:id="@+id/viewMenu"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/height_actionBar"
+        android:background="@color/yellow_gloomy"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/imageButtonArrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_arrow"
+        app:layout_constraintBottom_toBottomOf="@id/viewMenu"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="@dimen/small_margin"
+        android:paddingTop="@dimen/small_padding" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textHeader"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/viewMenu"
+        app:layout_constraintEnd_toEndOf="@id/viewMenu"
+        app:layout_constraintTop_toTopOf="@id/viewMenu"
+        app:layout_constraintBottom_toBottomOf="@id/viewMenu"
+        android:text="@string/header_details"
+        android:textColor="@color/white_tint"
+        android:textAlignment="center"
+        android:textSize="@dimen/size_header"
+        android:fontFamily="@font/open_sans_bold" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageListNote"
+        android:layout_width="@dimen/width_form_note"
+        android:layout_height="0dp"
+        android:layout_marginVertical="@dimen/small_margin"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_note"
+        app:layout_constraintBottom_toTopOf="@id/buttonSave"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewMenu" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/editTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/imageListNote"
+        app:layout_constraintEnd_toEndOf="@id/imageListNote"
+        app:layout_constraintTop_toTopOf="@id/imageListNote"
+        android:layout_marginTop="@dimen/small_margin"
+        android:layout_marginHorizontal="@dimen/small_margin"
+        android:text="@string/label_title"
+        android:textAlignment="center"
+        android:textSize="@dimen/size_text_title"
+        android:fontFamily="@font/garamond_pro_regular"
+        android:textColor="@color/black" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/editNote"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/small_margin"
+        android:fontFamily="@font/garamond_pro_regular"
+        android:text="@string/label_text"
+        android:textColor="@color/black"
+        android:textSize="@dimen/size_text"
+        app:layout_constraintBottom_toBottomOf="@id/imageListNote"
+        app:layout_constraintEnd_toEndOf="@id/imageListNote"
+        app:layout_constraintStart_toStartOf="@id/imageListNote"
+        app:layout_constraintTop_toBottomOf="@id/editTitle" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonDelete"
+        android:layout_width="@dimen/width_button"
+        android:layout_height="@dimen/height_button"
+        android:text="@string/text_delete"
+        android:textSize="@dimen/size_text"
+        android:fontFamily="@font/open_sans_bold"
+        android:textAlignment="center"
+        android:textColor="@color/white_tint"
+        android:background="@drawable/bg_rounded_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageListNote"
+        app:layout_constraintEnd_toStartOf="@id/buttonSave"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="@dimen/small_margin"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        android:paddingTop="@dimen/normal_padding" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonSave"
+        android:layout_width="@dimen/width_button"
+        android:layout_height="@dimen/height_button"
+        android:text="@string/text_save"
+        android:textSize="@dimen/size_text"
+        android:fontFamily="@font/open_sans_bold"
+        android:textColor="@color/white_tint"
+        android:textAlignment="center"
+        android:background="@drawable/bg_rounded_button"
+        app:layout_constraintBottom_toBottomOf="@id/buttonDelete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/buttonDelete"
+        app:layout_constraintTop_toTopOf="@id/buttonDelete"
+        android:paddingTop="@dimen/normal_padding" />
+</androidx.constraintlayout.widget.ConstraintLayout>
