@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.example.notebook.data.entities.Note
+import com.example.notebook.data.note.entities.Note
 import com.example.notebook.databinding.FragmentAddNoteBinding
 import com.example.notebook.view.fragments.BaseFragment
 import com.example.notebook.view.utils.Constants

@@ -1,4 +1,4 @@
-package com.example.notebook.data.entities
+package com.example.notebook.data.note.entities
 
 import android.os.Parcelable
 import androidx.room.Entity

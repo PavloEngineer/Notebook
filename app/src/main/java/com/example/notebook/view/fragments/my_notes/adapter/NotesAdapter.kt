@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.notebook.data.entities.Note
+import com.example.notebook.data.note.entities.Note
 import com.example.notebook.databinding.ItemNoteBinding
 import com.example.notebook.view.callBacks.diffutil.NoteDiffUtil
 import com.example.notebook.view.interfaces.NotesAdapterListener

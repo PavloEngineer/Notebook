@@ -9,7 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.example.notebook.data.entities.Note
+import com.example.notebook.data.note.entities.Note
 import com.example.notebook.databinding.FragmentDetailsNoteBinding
 import com.example.notebook.view.fragments.BaseFragment
 

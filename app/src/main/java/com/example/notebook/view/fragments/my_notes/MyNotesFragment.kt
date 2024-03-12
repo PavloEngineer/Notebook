@@ -11,7 +11,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.notebook.App
 import com.example.notebook.R
-import com.example.notebook.data.entities.Note
+import com.example.notebook.data.Repositories
+import com.example.notebook.data.note.entities.Note
 import com.example.notebook.databinding.FragmentListNotesBinding
 import com.example.notebook.view.fragments.BaseFragment
 import com.example.notebook.view.fragments.my_notes.adapter.NotesAdapter
@@ -33,12 +34,12 @@ class MyNotesFragment: BaseFragment<FragmentListNotesBinding>(FragmentListNotesB
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        Repositories.init(requireContext())
         setupRecyclerView()
     }
 
     override fun onStart() {
         super.onStart()
-        App.launchDatabase(requireContext())
         viewModel.notes.observe(viewLifecycleOwner) {
             notesAdapter.submitList(it)
         }

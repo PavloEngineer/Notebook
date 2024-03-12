@@ -1,7 +1,7 @@
 package com.example.notebook.view.callBacks.diffutil
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.notebook.data.entities.Note
+import com.example.notebook.data.note.entities.Note
 
 class NoteDiffUtil: DiffUtil.ItemCallback<Note>() {
 
