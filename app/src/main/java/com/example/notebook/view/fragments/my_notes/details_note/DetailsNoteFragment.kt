@@ -1,19 +1,19 @@
 package com.example.notebook.view.fragments.my_notes.details_note
 
 import android.os.Bundle
-import android.text.Editable
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModel
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.notebook.R
 import com.example.notebook.data.note.entities.Note
 import com.example.notebook.databinding.FragmentDetailsNoteBinding
 import com.example.notebook.view.fragments.BaseFragment
+import com.example.notebook.view.utils.extensions.toEditable
 
-class DetailsNoteFragment: BaseFragment<FragmentDetailsNoteBinding>(FragmentDetailsNoteBinding::inflate) {
+class DetailsNoteFragment :
+    BaseFragment<FragmentDetailsNoteBinding>(FragmentDetailsNoteBinding::inflate) {
 
     private val viewModel: DetailsNoteViewModel by viewModels()
 
@@ -31,27 +31,32 @@ class DetailsNoteFragment: BaseFragment<FragmentDetailsNoteBinding>(FragmentDeta
         }
     }
 
-    private fun String.toEditable(): Editable = Editable.Factory.getInstance().newEditable(this)
-
     override fun setListeners() {
         with(binding) {
             buttonDelete.setOnClickListener {
-                viewModel.deleteNote(args.note)
-                findNavController().navigateUp()
-                Toast.makeText(context, "Successful deleted!", Toast.LENGTH_SHORT).show()
+                doActionOnDelete()
             }
 
             buttonSave.setOnClickListener {
-                with(binding) {
-                    val note = Note(args.note.id, editTitle.text.toString(), editNote.text.toString())
-                    viewModel.updateNote(note)
-                    findNavController().navigateUp()
-                }
+                doActionOnUpdate()
             }
 
             imageButtonArrow.setOnClickListener {
                 findNavController().navigateUp()
             }
         }
+    }
+
+    private fun doActionOnDelete() {
+        viewModel.deleteNote(args.note)
+        findNavController().navigateUp()
+        Toast.makeText(requireContext(), R.string.message_delete, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun doActionOnUpdate() {
+        val note = Note(args.note.id, binding.editTitle.text.toString(), binding.editNote.text.toString())
+        viewModel.updateNote(note)
+        findNavController().navigateUp()
+        Toast.makeText(requireContext(), R.string.message_update, Toast.LENGTH_SHORT).show()
     }
 }

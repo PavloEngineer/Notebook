@@ -13,4 +13,9 @@
     <string name="header_details">Деталі</string>
     <string name="text_delete">Видалити</string>
     <string name="back_arrow">Back arrow</string>
+
+    <!-- Toast and snack labels -->
+    <string name="warning_adding_message">Будь ласка, заповніть всі поля!</string>
+    <string name="message_delete">Успішно видалено!</string>
+    <string name="message_update">Успішно оновлено!</string>
 </resources>

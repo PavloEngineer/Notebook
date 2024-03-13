@@ -15,6 +15,7 @@ abstract class BaseFragment<VBinding : ViewBinding>(
 ) : Fragment() {
 
     private var _binding: VBinding? = null
+
     val binding get() = requireNotNull(_binding)
 
     override fun onCreateView(
@@ -43,5 +44,6 @@ abstract class BaseFragment<VBinding : ViewBinding>(
             functionForAction()
         }?.show()
     }
+
     abstract fun setListeners()
 }

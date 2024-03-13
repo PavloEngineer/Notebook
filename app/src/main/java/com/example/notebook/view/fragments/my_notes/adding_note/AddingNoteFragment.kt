@@ -1,30 +1,26 @@
 package com.example.notebook.view.fragments.my_notes.adding_note
 
-import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.example.notebook.R
 import com.example.notebook.data.note.entities.Note
 import com.example.notebook.databinding.FragmentAddNoteBinding
 import com.example.notebook.view.fragments.BaseFragment
 import com.example.notebook.view.utils.Constants
+import com.example.notebook.view.utils.Constants.DEFAULT_ID
 
-class AddingNoteFragment: BaseFragment<FragmentAddNoteBinding>(FragmentAddNoteBinding::inflate) {
+class AddingNoteFragment : BaseFragment<FragmentAddNoteBinding>(FragmentAddNoteBinding::inflate) {
 
     private val viewModel: AddingNoteViewModel by viewModels()
 
     override fun setListeners() {
         with(binding) {
-            imageButtonArrow.setOnClickListener{
+            imageButtonArrow.setOnClickListener {
                 findNavController().navigateUp()
             }
 
-            buttonSave.setOnClickListener{
+            buttonSave.setOnClickListener {
                 saveNote()
                 findNavController().navigateUp()
             }
@@ -32,23 +28,25 @@ class AddingNoteFragment: BaseFragment<FragmentAddNoteBinding>(FragmentAddNoteBi
     }
 
     private fun saveNote() {
-        with (binding) {
+        with(binding) {
             if (isNoteNotEmpty()) {
                 val note = Note(
-                    0,
+                    DEFAULT_ID,
                     editTitle.text.toString(),
                     editNote.text.toString()
                 )
 
                 viewModel.addNote(note)
             } else {
-                showToast()
+                Toast.makeText(
+                    requireContext(),
+                    R.string.warning_adding_message,
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }
 
-    private fun isNoteNotEmpty(): Boolean = binding.editTitle.text?.isNotEmpty() ?: false
-            && binding.editNote.text?.isNotEmpty() ?: false
-
-    private fun showToast() = Toast.makeText(context, Constants.WARNING_ADDING_MESSAGE, Toast.LENGTH_SHORT).show()
+    private fun isNoteNotEmpty(): Boolean =
+        binding.editTitle.text?.isNotEmpty() == true && binding.editNote.text?.isNotEmpty() == true
 }

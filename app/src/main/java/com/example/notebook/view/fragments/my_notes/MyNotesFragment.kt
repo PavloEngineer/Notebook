@@ -1,15 +1,11 @@
 package com.example.notebook.view.fragments.my_notes
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.notebook.App
 import com.example.notebook.R
 import com.example.notebook.data.Repositories
 import com.example.notebook.data.note.entities.Note

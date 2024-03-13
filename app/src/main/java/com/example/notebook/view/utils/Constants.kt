@@ -4,5 +4,5 @@ object Constants {
 
     const val MILLIS_DURATION: Int = 5000
 
-    const val WARNING_ADDING_MESSAGE = "Please, fill all files!"
+    const val DEFAULT_ID: Int = 0
 }

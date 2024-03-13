@@ -1,13 +1,8 @@
 package com.example.notebook.data.note.repositories
 
-import android.util.Log
 import androidx.lifecycle.LiveData
-import com.example.notebook.data.accessObjects.NoteDao
+import com.example.notebook.data.note.accessObjects.NoteDao
 import com.example.notebook.data.note.entities.Note
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 
 class NoteRepository(private val noteDao: NoteDao) {
 
