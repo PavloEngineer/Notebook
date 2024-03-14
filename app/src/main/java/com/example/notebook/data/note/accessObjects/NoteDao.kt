@@ -22,4 +22,7 @@ interface NoteDao {
 
     @Delete
     suspend fun deleteNote(note: Note)
+
+    @Query("SELECT * FROM note WHERE title LIKE '%' || :query || '%'")
+    fun searchNotesByTitle(query: String): LiveData<List<Note>>
 }

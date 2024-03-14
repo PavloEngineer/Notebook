@@ -49,14 +49,14 @@ class DetailsNoteFragment :
 
     private fun doActionOnDelete() {
         viewModel.deleteNote(args.note)
+        Toast.makeText(activity, R.string.message_delete, Toast.LENGTH_SHORT).show()
         findNavController().navigateUp()
-        Toast.makeText(requireContext(), R.string.message_delete, Toast.LENGTH_SHORT).show()
     }
 
     private fun doActionOnUpdate() {
         val note = Note(args.note.id, binding.editTitle.text.toString(), binding.editNote.text.toString())
         viewModel.updateNote(note)
+        Toast.makeText(activity, R.string.message_update, Toast.LENGTH_SHORT).show()
         findNavController().navigateUp()
-        Toast.makeText(requireContext(), R.string.message_update, Toast.LENGTH_SHORT).show()
     }
 }

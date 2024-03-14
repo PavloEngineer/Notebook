@@ -15,14 +15,45 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/app_name"
         android:textSize="@dimen/size_header"
         android:textColor="@color/white_tint"
         android:fontFamily="@font/open_sans_bold"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/viewMenu"
+        app:layout_constraintBottom_toBottomOf="@id/viewMenu"/>
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/buttonSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_loupe"
+        android:backgroundTint="@color/glassy"
+        app:layout_constraintTop_toTopOf="@id/viewMenu"
+        app:layout_constraintBottom_toBottomOf="@id/viewMenu"
+        app:layout_constraintEnd_toEndOf="@id/viewMenu"
+        android:layout_marginEnd="@dimen/normal_margin" />
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/editTextSearch"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:textSize="@dimen/size_text"
+        android:fontFamily="@font/garamond_pro_regular"
+        android:textColor="@color/black"
+        android:inputType="text"
+        android:hint="@string/label_search"
+        android:background="@drawable/border"
+        android:paddingVertical="@dimen/small_padding"
+        android:paddingHorizontal="@dimen/small_padding"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@id/viewMenu"
+        app:layout_constraintEnd_toEndOf="@id/viewMenu"
         app:layout_constraintTop_toTopOf="@id/viewMenu"
         app:layout_constraintBottom_toBottomOf="@id/viewMenu"/>
 

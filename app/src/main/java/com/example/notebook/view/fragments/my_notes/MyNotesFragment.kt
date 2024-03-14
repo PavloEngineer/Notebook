@@ -2,6 +2,7 @@ package com.example.notebook.view.fragments.my_notes
 
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
@@ -14,7 +15,8 @@ import com.example.notebook.view.fragments.BaseFragment
 import com.example.notebook.view.fragments.my_notes.adapter.NotesAdapter
 import com.example.notebook.view.interfaces.NotesAdapterListener
 
-class MyNotesFragment: BaseFragment<FragmentListNotesBinding>(FragmentListNotesBinding::inflate) {
+class MyNotesFragment: BaseFragment<FragmentListNotesBinding>(FragmentListNotesBinding::inflate),
+SearchView.OnQueryTextListener {
 
     private val viewModel: MyNoteViewModel by viewModels()
 
@@ -42,13 +44,49 @@ class MyNotesFragment: BaseFragment<FragmentListNotesBinding>(FragmentListNotesB
     }
 
     override fun setListeners() {
-        binding.buttonAddNote.setOnClickListener {
-            it.findNavController().navigate(R.id.action_myNotesFragment_to_addingNoteFragment)
+        with(binding) {
+            buttonAddNote.setOnClickListener {
+                it.findNavController().navigate(R.id.action_myNotesFragment_to_addingNoteFragment)
+            }
+
+            buttonSearch.setOnClickListener {
+                if (textHeader.visibility == View.GONE) {
+                    textHeader.visibility = View.VISIBLE
+                } else {
+                    textHeader.visibility = View.GONE
+                }
+
+                if (editTextSearch.visibility == View.GONE) {
+                    editTextSearch.visibility = View.VISIBLE
+                } else {
+                    editTextSearch.visibility = View.GONE
+                }
+            }
+
+            editTextSearch.setOnQueryTextListener(this@MyNotesFragment)
         }
     }
 
     private fun setupRecyclerView() {
         binding.recyclerNotes.adapter = notesAdapter
         binding.recyclerNotes.layoutManager = LinearLayoutManager(requireContext())
+    }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        searchNotes(query)
+        return true
+    }
+
+    override fun onQueryTextChange(newText: String?): Boolean {
+        searchNotes(newText)
+        return true
+    }
+
+    private fun searchNotes(query: String?) {
+        query?.let {
+            viewModel.searchNotesByTitle(query).observe(this) { list ->
+                notesAdapter.submitList(list)
+            }
+        }
     }
 }

@@ -1,6 +1,7 @@
 package com.example.notebook.data.note.repositories
 
 import androidx.lifecycle.LiveData
+import androidx.room.Query
 import com.example.notebook.data.note.accessObjects.NoteDao
 import com.example.notebook.data.note.entities.Note
 
@@ -20,6 +21,10 @@ class NoteRepository(private val noteDao: NoteDao) {
 
     suspend fun deleteNote(note: Note) {
         noteDao.deleteNote(note)
+    }
+
+     fun searchNotesByTitle(query: String): LiveData<List<Note>>{
+        return noteDao.searchNotesByTitle(query)
     }
 
     fun getAllNotes(): LiveData<List<Note>> = notesAll

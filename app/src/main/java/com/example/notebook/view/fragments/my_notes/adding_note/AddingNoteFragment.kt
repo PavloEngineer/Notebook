@@ -7,7 +7,6 @@ import com.example.notebook.R
 import com.example.notebook.data.note.entities.Note
 import com.example.notebook.databinding.FragmentAddNoteBinding
 import com.example.notebook.view.fragments.BaseFragment
-import com.example.notebook.view.utils.Constants
 import com.example.notebook.view.utils.Constants.DEFAULT_ID
 
 class AddingNoteFragment : BaseFragment<FragmentAddNoteBinding>(FragmentAddNoteBinding::inflate) {
