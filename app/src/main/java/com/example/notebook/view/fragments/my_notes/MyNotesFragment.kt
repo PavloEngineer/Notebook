@@ -50,21 +50,16 @@ SearchView.OnQueryTextListener {
             }
 
             buttonSearch.setOnClickListener {
-                if (textHeader.visibility == View.GONE) {
-                    textHeader.visibility = View.VISIBLE
-                } else {
-                    textHeader.visibility = View.GONE
-                }
-
-                if (editTextSearch.visibility == View.GONE) {
-                    editTextSearch.visibility = View.VISIBLE
-                } else {
-                    editTextSearch.visibility = View.GONE
-                }
+                toggleVisibility(textHeader)
+                toggleVisibility(editTextSearch)
             }
 
             editTextSearch.setOnQueryTextListener(this@MyNotesFragment)
         }
+    }
+
+    private fun toggleVisibility(view: View) {
+        view.visibility = if (view.visibility == View.VISIBLE) View.GONE else View.VISIBLE
     }
 
     private fun setupRecyclerView() {

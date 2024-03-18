@@ -15,4 +15,25 @@
         <!-- Customize your theme here. -->
         <item name="android:windowActivityTransitions">true</item>
     </style>
+
+    <style name="LabelHeaderStyle">
+        <item name="android:textSize">@dimen/size_header</item>
+        <item name="android:textColor">@color/white_tint</item>
+        <item name="android:fontFamily">@font/open_sans_bold</item>
+    </style>
+
+    <style name="TitleStyle">
+        <item name="android:textSize">@dimen/size_text_title</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/garamond_pro_regular</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="ButtonStyle">
+        <item name="android:textSize">@dimen/size_text</item>
+        <item name="android:textColor">@color/white_tint</item>
+        <item name="android:fontFamily">@font/open_sans_bold</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:paddingTop">@dimen/normal_padding</item>
+    </style>
 </resources>

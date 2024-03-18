@@ -11,5 +11,7 @@ interface NoteRepositories {
 
     suspend fun deleteNote(note: Note)
 
+    fun searchNotesByTitle(query: String): LiveData<List<Note>>
+
     fun getAllNotes(): LiveData<List<Note>>
 }

@@ -19,10 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/app_name"
-        android:textSize="@dimen/size_header"
-        android:textColor="@color/white_tint"
-        android:fontFamily="@font/open_sans_bold"
-
+        android:theme="@style/LabelHeaderStyle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/viewMenu"
@@ -34,15 +31,15 @@
         android:layout_height="wrap_content"
         android:src="@drawable/ic_loupe"
         android:backgroundTint="@color/glassy"
+        android:layout_marginEnd="@dimen/normal_margin"
         app:layout_constraintTop_toTopOf="@id/viewMenu"
         app:layout_constraintBottom_toBottomOf="@id/viewMenu"
-        app:layout_constraintEnd_toEndOf="@id/viewMenu"
-        android:layout_marginEnd="@dimen/normal_margin" />
+        app:layout_constraintEnd_toEndOf="@id/viewMenu" />
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/editTextSearch"
-        android:layout_width="250dp"
-        android:layout_height="40dp"
+        android:layout_width="@dimen/width_button_search"
+        android:layout_height="@dimen/height_button_search"
         android:textSize="@dimen/size_text"
         android:fontFamily="@font/garamond_pro_regular"
         android:textColor="@color/black"
