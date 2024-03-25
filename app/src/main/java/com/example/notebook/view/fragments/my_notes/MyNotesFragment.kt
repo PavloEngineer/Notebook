@@ -46,6 +46,7 @@ SearchView.OnQueryTextListener {
 
     override fun setListeners() {
         with(binding) {
+            editTextSearch.setIconifiedByDefault(false)
             buttonAddNote.setOnClickListener {
                 it.findNavController().navigate(R.id.action_myNotesFragment_to_addingNoteFragment)
             }
