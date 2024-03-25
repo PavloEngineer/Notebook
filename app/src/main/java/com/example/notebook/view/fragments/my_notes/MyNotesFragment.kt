@@ -20,6 +20,7 @@ SearchView.OnQueryTextListener {
 
     private val viewModel: MyNoteViewModel by viewModels()
 
+    // TODO: By lazy
     private val notesAdapter = NotesAdapter(
         listener = object : NotesAdapterListener {
             override fun onClick(note: Note) {

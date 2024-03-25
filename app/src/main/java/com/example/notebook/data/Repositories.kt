@@ -4,6 +4,7 @@ import android.content.Context
 import com.example.notebook.data.database.NoteDatabase
 import com.example.notebook.data.note.repositories.NoteRepository
 
+// TODO: memory leak
 object Repositories {
 
     private lateinit var applicationContext: Context

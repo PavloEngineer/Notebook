@@ -30,7 +30,7 @@ class AddingNoteFragment : BaseFragment<FragmentAddNoteBinding>(FragmentAddNoteB
         with(binding) {
             if (isNoteNotEmpty()) {
                 val note = Note(
-                    DEFAULT_ID,
+                    DEFAULT_ID, // TODO: Wrong way, without id, must get only from DB
                     editTitle.text.toString(),
                     editNote.text.toString()
                 )
@@ -46,6 +46,7 @@ class AddingNoteFragment : BaseFragment<FragmentAddNoteBinding>(FragmentAddNoteB
         }
     }
 
+    // TODO: Adjust
     private fun isNoteNotEmpty(): Boolean =
         binding.editTitle.text?.isNotEmpty() == true && binding.editNote.text?.isNotEmpty() == true
 }
