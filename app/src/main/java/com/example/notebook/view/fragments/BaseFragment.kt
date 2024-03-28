@@ -6,11 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
-import com.example.notebook.view.utils.Constants.MILLIS_DURATION
-import com.google.android.material.snackbar.Snackbar
 
-// TODO: Snack wrong
-typealias FunctionForSnack = () -> Unit
 abstract class BaseFragment<VBinding : ViewBinding>(
     private val inflaterMethod: (LayoutInflater, ViewGroup?, Boolean) -> VBinding
 ) : Fragment() {
@@ -38,19 +34,5 @@ abstract class BaseFragment<VBinding : ViewBinding>(
         super.onDestroyView()
     }
 
-    // TODO: Delete
-    protected fun showSnackBar(label: String, actionById: Int, functionForAction: FunctionForSnack) {
-        view?.let {
-            Snackbar.make(
-                it,
-                label,
-                MILLIS_DURATION
-            )
-        }?.setAction(actionById) {
-            functionForAction()
-        }?.show()
-    }
-
-    // TODO: Change modifiers access
-    abstract fun setListeners()
+    protected open fun setListeners() {}
 }

@@ -35,10 +35,12 @@ class DetailsNoteFragment :
         with(binding) {
             buttonDelete.setOnClickListener {
                 doActionOnDelete()
+                findNavController().navigateUp()
             }
 
             buttonSave.setOnClickListener {
                 doActionOnUpdate()
+                findNavController().navigateUp()
             }
 
             imageButtonArrow.setOnClickListener {
@@ -50,13 +52,12 @@ class DetailsNoteFragment :
     private fun doActionOnDelete() {
         viewModel.deleteNote(args.note)
         Toast.makeText(activity, R.string.message_delete, Toast.LENGTH_SHORT).show()
-        findNavController().navigateUp()
     }
 
     private fun doActionOnUpdate() {
-        val note = Note(args.note.id, binding.editTitle.text.toString(), binding.editNote.text.toString())
+        val note = Note(binding.editTitle.text.toString(), binding.editNote.text.toString())
+        note.id = args.note.id
         viewModel.updateNote(note)
         Toast.makeText(activity, R.string.message_update, Toast.LENGTH_SHORT).show()
-        findNavController().navigateUp()
     }
 }

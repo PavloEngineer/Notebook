@@ -1,4 +1,4 @@
-package com.example.notebook.view.fragments.my_notes.adding_note
+package com.example.notebook.view.fragments.my_notes.creation_note
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -7,7 +7,7 @@ import com.example.notebook.data.note.entities.Note
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class AddingNoteViewModel: ViewModel() {
+class CreationNoteViewModel: ViewModel() {
 
     fun addNote(note: Note) {
         viewModelScope.launch(Dispatchers.IO) {

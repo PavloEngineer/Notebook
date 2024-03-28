@@ -1,4 +1,4 @@
-package com.example.notebook.view.fragments.my_notes.adding_note
+package com.example.notebook.view.fragments.my_notes.creation_note
 
 import android.widget.Toast
 import androidx.fragment.app.viewModels
@@ -9,9 +9,9 @@ import com.example.notebook.databinding.FragmentAddNoteBinding
 import com.example.notebook.view.fragments.BaseFragment
 import com.example.notebook.view.utils.Constants.DEFAULT_ID
 
-class AddingNoteFragment : BaseFragment<FragmentAddNoteBinding>(FragmentAddNoteBinding::inflate) {
+class CreationNoteFragment : BaseFragment<FragmentAddNoteBinding>(FragmentAddNoteBinding::inflate) {
 
-    private val viewModel: AddingNoteViewModel by viewModels()
+    private val viewModel: CreationNoteViewModel by viewModels()
 
     override fun setListeners() {
         with(binding) {
@@ -28,9 +28,8 @@ class AddingNoteFragment : BaseFragment<FragmentAddNoteBinding>(FragmentAddNoteB
 
     private fun saveNote() {
         with(binding) {
-            if (isNoteNotEmpty()) {
+            if (!isNoteEmpty()) {
                 val note = Note(
-                    DEFAULT_ID, // TODO: Wrong way, without id, must get only from DB
                     editTitle.text.toString(),
                     editNote.text.toString()
                 )
@@ -38,7 +37,7 @@ class AddingNoteFragment : BaseFragment<FragmentAddNoteBinding>(FragmentAddNoteB
                 viewModel.addNote(note)
             } else {
                 Toast.makeText(
-                    requireContext(),
+                    activity,
                     R.string.warning_adding_message,
                     Toast.LENGTH_SHORT
                 ).show()
@@ -47,6 +46,6 @@ class AddingNoteFragment : BaseFragment<FragmentAddNoteBinding>(FragmentAddNoteB
     }
 
     // TODO: Adjust
-    private fun isNoteNotEmpty(): Boolean =
-        binding.editTitle.text?.isNotEmpty() == true && binding.editNote.text?.isNotEmpty() == true
+    private fun isNoteEmpty(): Boolean =
+        binding.editTitle.text.isNullOrEmpty() && binding.editNote.text.isNullOrEmpty()
 }

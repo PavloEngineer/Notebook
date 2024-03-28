@@ -20,16 +20,17 @@ SearchView.OnQueryTextListener {
 
     private val viewModel: MyNoteViewModel by viewModels()
 
-    // TODO: By lazy
-    private val notesAdapter = NotesAdapter(
-        listener = object : NotesAdapterListener {
-            override fun onClick(note: Note) {
-                val direction =
-                    MyNotesFragmentDirections.actionMyNotesFragmentToDetailsNoteFragment(note)
-                findNavController().navigate(direction)
+    private val notesAdapter by lazy {
+        NotesAdapter(
+            listener = object : NotesAdapterListener {
+                override fun onClick(note: Note) {
+                    val direction =
+                        MyNotesFragmentDirections.actionMyNotesFragmentToDetailsNoteFragment(note)
+                    findNavController().navigate(direction)
+                }
             }
-        }
-    )
+        )
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
