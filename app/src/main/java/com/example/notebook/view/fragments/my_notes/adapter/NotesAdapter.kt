@@ -44,5 +44,5 @@ class NotesAdapter (
     override fun onBindViewHolder(
         holder: NotesViewHolder,
         position: Int
-    ) = holder.bind(currentList[position])
+    ) = holder.bind(getItem(position))
 }

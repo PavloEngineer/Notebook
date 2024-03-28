@@ -7,7 +7,6 @@ import com.example.notebook.R
 import com.example.notebook.data.note.entities.Note
 import com.example.notebook.databinding.FragmentAddNoteBinding
 import com.example.notebook.view.fragments.BaseFragment
-import com.example.notebook.view.utils.Constants.DEFAULT_ID
 
 class CreationNoteFragment : BaseFragment<FragmentAddNoteBinding>(FragmentAddNoteBinding::inflate) {
 
@@ -21,7 +20,6 @@ class CreationNoteFragment : BaseFragment<FragmentAddNoteBinding>(FragmentAddNot
 
             buttonSave.setOnClickListener {
                 saveNote()
-                findNavController().navigateUp()
             }
         }
     }
@@ -29,15 +27,12 @@ class CreationNoteFragment : BaseFragment<FragmentAddNoteBinding>(FragmentAddNot
     private fun saveNote() {
         with(binding) {
             if (!isNoteEmpty()) {
-                val note = Note(
-                    editTitle.text.toString(),
-                    editNote.text.toString()
-                )
-
+                val note = Note(editTitle.text.toString(), editNote.text.toString())
                 viewModel.addNote(note)
+                findNavController().navigateUp()
             } else {
                 Toast.makeText(
-                    activity,
+                    requireContext(),
                     R.string.warning_adding_message,
                     Toast.LENGTH_SHORT
                 ).show()
@@ -45,7 +40,6 @@ class CreationNoteFragment : BaseFragment<FragmentAddNoteBinding>(FragmentAddNot
         }
     }
 
-    // TODO: Adjust
     private fun isNoteEmpty(): Boolean =
         binding.editTitle.text.isNullOrEmpty() && binding.editNote.text.isNullOrEmpty()
 }

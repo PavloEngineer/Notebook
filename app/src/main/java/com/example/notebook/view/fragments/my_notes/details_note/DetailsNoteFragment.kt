@@ -1,6 +1,7 @@
 package com.example.notebook.view.fragments.my_notes.details_note
 
 import android.os.Bundle
+import android.text.Editable
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
@@ -10,7 +11,6 @@ import com.example.notebook.R
 import com.example.notebook.data.note.entities.Note
 import com.example.notebook.databinding.FragmentDetailsNoteBinding
 import com.example.notebook.view.fragments.BaseFragment
-import com.example.notebook.view.utils.extensions.toEditable
 
 class DetailsNoteFragment :
     BaseFragment<FragmentDetailsNoteBinding>(FragmentDetailsNoteBinding::inflate) {
@@ -31,16 +31,16 @@ class DetailsNoteFragment :
         }
     }
 
+    private fun String.toEditable(): Editable = Editable.Factory.getInstance().newEditable(this)
+
     override fun setListeners() {
         with(binding) {
             buttonDelete.setOnClickListener {
                 doActionOnDelete()
-                findNavController().navigateUp()
             }
 
             buttonSave.setOnClickListener {
                 doActionOnUpdate()
-                findNavController().navigateUp()
             }
 
             imageButtonArrow.setOnClickListener {
@@ -51,13 +51,13 @@ class DetailsNoteFragment :
 
     private fun doActionOnDelete() {
         viewModel.deleteNote(args.note)
-        Toast.makeText(activity, R.string.message_delete, Toast.LENGTH_SHORT).show()
+        showSnackbar(getString(R.string.message_delete)) { findNavController().navigateUp() }
     }
 
     private fun doActionOnUpdate() {
         val note = Note(binding.editTitle.text.toString(), binding.editNote.text.toString())
         note.id = args.note.id
         viewModel.updateNote(note)
-        Toast.makeText(activity, R.string.message_update, Toast.LENGTH_SHORT).show()
+        showSnackbar(getString(R.string.message_update))  { findNavController().navigateUp() }
     }
 }
