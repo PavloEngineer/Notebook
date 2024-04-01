@@ -1,9 +1,9 @@
-package com.example.notebook.data.note.interfaces
+package com.example.notebook.domain.repository
 
 import androidx.lifecycle.LiveData
-import com.example.notebook.data.note.entities.Note
+import com.example.notebook.domain.models.Note
 
-interface NoteRepositories {
+interface NoteRepository {
 
     suspend fun addNote(note: Note)
 

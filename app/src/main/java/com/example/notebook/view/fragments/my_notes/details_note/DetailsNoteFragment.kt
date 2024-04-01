@@ -3,13 +3,12 @@ package com.example.notebook.view.fragments.my_notes.details_note
 import android.os.Bundle
 import android.text.Editable
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.notebook.R
-import com.example.notebook.data.note.entities.Note
 import com.example.notebook.databinding.FragmentDetailsNoteBinding
+import com.example.notebook.domain.models.Note
 import com.example.notebook.view.fragments.BaseFragment
 
 class DetailsNoteFragment :

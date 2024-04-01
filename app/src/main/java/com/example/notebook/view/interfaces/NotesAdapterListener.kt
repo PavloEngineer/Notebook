@@ -1,9 +1,8 @@
 package com.example.notebook.view.interfaces
 
-import com.example.notebook.data.note.entities.Note
+import com.example.notebook.domain.models.Note
 
 interface NotesAdapterListener {
 
-    // TODO: better name
-    fun onClick(note: Note)
+    fun onRootClick(note: Note)
 }

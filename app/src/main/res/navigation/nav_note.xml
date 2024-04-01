@@ -48,6 +48,6 @@
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <argument
             android:name="note"
-            app:argType="com.example.notebook.data.note.entities.Note" />
+            app:argType="com.example.notebook.domain.models.Note" />
     </fragment>
 </navigation>

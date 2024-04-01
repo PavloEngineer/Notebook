@@ -2,7 +2,7 @@ package com.example.notebook.data
 
 import android.content.Context
 import com.example.notebook.data.database.NoteDatabase
-import com.example.notebook.data.note.repositories.NoteRepository
+import com.example.notebook.data.note.repositories.NoteRepositoryImpl
 
 // TODO: memory leak
 object Repositories {
@@ -13,11 +13,15 @@ object Repositories {
         NoteDatabase.initialDatabase(applicationContext)
     }
 
-    val noteRepository: NoteRepository by lazy {
-        NoteRepository(database.getNoteDao())
+    val noteRepositoryImpl: NoteRepositoryImpl by lazy {
+        NoteRepositoryImpl(database.getNoteDao())
     }
 
     fun init(context: Context) {
         applicationContext = context
+    }
+
+    fun closeDatabase() {
+        database.close()
     }
 }

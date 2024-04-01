@@ -4,8 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.notebook.data.note.entities.Note
 import com.example.notebook.databinding.ItemNoteBinding
+import com.example.notebook.domain.models.Note
 import com.example.notebook.view.callBacks.diffutil.NoteDiffUtil
 import com.example.notebook.view.interfaces.NotesAdapterListener
 
@@ -22,7 +22,7 @@ class NotesAdapter (
                 editTitle.text = note.title
                 editNote.text = note.text
                 root.setOnClickListener {
-                    listener.onClick(note)
+                    listener.onRootClick(note)
                 }
             }
         }

@@ -4,8 +4,9 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.notebook.R
-import com.example.notebook.data.note.entities.Note
+import com.example.notebook.data.note.entities.NoteEntity
 import com.example.notebook.databinding.FragmentAddNoteBinding
+import com.example.notebook.domain.models.Note
 import com.example.notebook.view.fragments.BaseFragment
 
 class CreationNoteFragment : BaseFragment<FragmentAddNoteBinding>(FragmentAddNoteBinding::inflate) {

@@ -58,7 +58,6 @@ android {
 
 dependencies {
 
-    // TODO: Push number of implementation to another file
     implementation (libs.androidx.core.ktx)
     implementation (libs.androidx.appcompat)
     implementation (libs.material)
@@ -80,4 +79,7 @@ dependencies {
     implementation (libs.androidx.room.runtime)
     ksp(libs.androidx.room.compiler)
     implementation (libs.androidx.room.ktx)
+
+    // Hilt
+
 }

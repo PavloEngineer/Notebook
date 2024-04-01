@@ -9,8 +9,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.notebook.R
 import com.example.notebook.data.Repositories
-import com.example.notebook.data.note.entities.Note
 import com.example.notebook.databinding.FragmentListNotesBinding
+import com.example.notebook.domain.models.Note
 import com.example.notebook.view.fragments.BaseFragment
 import com.example.notebook.view.fragments.my_notes.adapter.NotesAdapter
 import com.example.notebook.view.interfaces.NotesAdapterListener
@@ -23,7 +23,7 @@ SearchView.OnQueryTextListener {
     private val notesAdapter by lazy {
         NotesAdapter(
             listener = object : NotesAdapterListener {
-                override fun onClick(note: Note) {
+                override fun onRootClick(note: Note) {
                     val direction =
                         MyNotesFragmentDirections.actionMyNotesFragmentToDetailsNoteFragment(note)
                     findNavController().navigate(direction)
@@ -34,7 +34,7 @@ SearchView.OnQueryTextListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Repositories.init(requireContext())
+        activity?.let { Repositories.init(it.applicationContext) }
         setupRecyclerView()
     }
 
