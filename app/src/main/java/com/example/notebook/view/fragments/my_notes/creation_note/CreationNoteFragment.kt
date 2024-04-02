@@ -8,7 +8,9 @@ import com.example.notebook.data.note.entities.NoteEntity
 import com.example.notebook.databinding.FragmentAddNoteBinding
 import com.example.notebook.domain.models.Note
 import com.example.notebook.view.fragments.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CreationNoteFragment : BaseFragment<FragmentAddNoteBinding>(FragmentAddNoteBinding::inflate) {
 
     private val viewModel: CreationNoteViewModel by viewModels()

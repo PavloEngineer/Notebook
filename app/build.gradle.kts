@@ -1,9 +1,10 @@
-
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.google.devtools.ksp)
     id("kotlin-parcelize")
+//    alias(libs.plugins.google.dagger.hilt.android)
+    id("com.google.dagger.hilt.android")
 
     // safe args
     alias(libs.plugins.navigation.safeargs.kotlin)
@@ -24,6 +25,8 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+
+        multiDexEnabled = true
     }
 
     buildTypes {
@@ -58,28 +61,33 @@ android {
 
 dependencies {
 
-    implementation (libs.androidx.core.ktx)
-    implementation (libs.androidx.appcompat)
-    implementation (libs.material)
-    implementation (libs.androidx.constraintlayout)
-    implementation (libs.androidx.lifecycle.viewmodel.ktx)
-    implementation (libs.kotlin.stdlib.jdk7)
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.material)
+    implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.kotlin.stdlib.jdk7)
     implementation(libs.androidx.monitor)
     implementation(libs.androidx.junit.ktx)
 
     // Fragment navigation
-    implementation (libs.androidx.navigation.ui.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.navigation.fragment.ktx)
 
     // Coroutines
-    implementation (libs.kotlinx.coroutines.core)
-    implementation (libs.kotlinx.coroutines.android)
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.coroutines.android)
 
     // Room
-    implementation (libs.androidx.room.runtime)
+    implementation(libs.androidx.room.runtime)
     ksp(libs.androidx.room.compiler)
-    implementation (libs.androidx.room.ktx)
+    implementation(libs.androidx.room.ktx)
 
     // Hilt
-
+//    implementation(libs.dagger.hilt.android)
+//    ksp(libs.dagger.hilt.compiler)
+    implementation("com.google.dagger:hilt-android:2.45")
+    ksp("com.google.dagger:hilt-compiler:2.45")
 }
+
+

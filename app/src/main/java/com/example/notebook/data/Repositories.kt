@@ -7,21 +7,19 @@ import com.example.notebook.data.note.repositories.NoteRepositoryImpl
 // TODO: memory leak
 object Repositories {
 
-    private lateinit var applicationContext: Context
+//    private lateinit var applicationContext: Context
+//
+//    private val database: NoteDatabase
+//
+//    val noteRepositoryImpl: NoteRepositoryImpl by lazy {
+//        NoteRepositoryImpl(database.getNoteDao())
+//    }
+//
+//    fun init(context: Context) {
+//        applicationContext = context
+//    }
 
-    private val database: NoteDatabase by lazy {
-        NoteDatabase.initialDatabase(applicationContext)
-    }
-
-    val noteRepositoryImpl: NoteRepositoryImpl by lazy {
-        NoteRepositoryImpl(database.getNoteDao())
-    }
-
-    fun init(context: Context) {
-        applicationContext = context
-    }
-
-    fun closeDatabase() {
-        database.close()
-    }
+//    fun closeDatabase() {
+//        database.close()
+//    }
 }

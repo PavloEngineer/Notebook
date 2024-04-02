@@ -7,10 +7,13 @@ import com.example.notebook.data.note.entities.NoteEntity
 import com.example.notebook.domain.models.Note
 import com.example.notebook.domain.use_cases.AddNoteUseCase
 import com.example.notebook.domain.use_cases.UpdateNoteUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class DetailsNoteViewModel (
+@HiltViewModel
+class DetailsNoteViewModel @Inject constructor(
     private val updateNoteUseCase: UpdateNoteUseCase,
     private val deleteNoteUseCase: AddNoteUseCase
 ): ViewModel() {

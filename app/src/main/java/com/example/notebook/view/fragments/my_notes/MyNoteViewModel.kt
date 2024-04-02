@@ -5,16 +5,21 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.notebook.data.Repositories
+import com.example.notebook.data.database.NoteDatabase
 import com.example.notebook.data.note.entities.NoteEntity
 import com.example.notebook.domain.models.Note
 import com.example.notebook.domain.use_cases.GetNotesUseCase
 import com.example.notebook.domain.use_cases.SearchNoteUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import javax.inject.Inject
 
-class MyNoteViewModel(
+@HiltViewModel
+class MyNoteViewModel @Inject constructor(
+    private val database: NoteDatabase,
     private val searchNoteUseCase: SearchNoteUseCase,
     private val getNotesUseCase: GetNotesUseCase
 ): ViewModel() {
@@ -29,6 +34,6 @@ class MyNoteViewModel(
 
     override fun onCleared() {
         super.onCleared()
-        Repositories.closeDatabase()
+        database.closeDatabase()
     }
 }

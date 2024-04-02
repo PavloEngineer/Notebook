@@ -10,7 +10,9 @@ import com.example.notebook.R
 import com.example.notebook.databinding.FragmentDetailsNoteBinding
 import com.example.notebook.domain.models.Note
 import com.example.notebook.view.fragments.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class DetailsNoteFragment :
     BaseFragment<FragmentDetailsNoteBinding>(FragmentDetailsNoteBinding::inflate) {
 

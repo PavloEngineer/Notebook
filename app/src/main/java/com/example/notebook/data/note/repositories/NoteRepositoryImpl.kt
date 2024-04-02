@@ -6,8 +6,9 @@ import com.example.notebook.data.note.accessObjects.NoteDao
 import com.example.notebook.data.note.entities.NoteEntity
 import com.example.notebook.domain.models.Note
 import com.example.notebook.domain.repository.NoteRepository
+import javax.inject.Inject
 
-class NoteRepositoryImpl(private val noteDao: NoteDao):
+class NoteRepositoryImpl @Inject constructor(private val noteDao: NoteDao):
     NoteRepository {
 
     private val notesAll by lazy {

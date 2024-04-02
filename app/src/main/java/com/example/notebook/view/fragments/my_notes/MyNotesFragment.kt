@@ -14,7 +14,9 @@ import com.example.notebook.domain.models.Note
 import com.example.notebook.view.fragments.BaseFragment
 import com.example.notebook.view.fragments.my_notes.adapter.NotesAdapter
 import com.example.notebook.view.interfaces.NotesAdapterListener
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MyNotesFragment: BaseFragment<FragmentListNotesBinding>(FragmentListNotesBinding::inflate),
 SearchView.OnQueryTextListener {
 
@@ -34,7 +36,7 @@ SearchView.OnQueryTextListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        activity?.let { Repositories.init(it.applicationContext) }
+//        activity?.let { Repositories.init(it.applicationContext) }
         setupRecyclerView()
     }
 

@@ -14,4 +14,6 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android) apply false
     alias(libs.plugins.google.devtools.ksp) apply false
     alias(libs.plugins.navigation.safeargs.kotlin) apply false
+//    alias(libs.plugins.google.dagger.hilt.android) apply false
+    id("com.google.dagger.hilt.android") version "2.45" apply false
 }
