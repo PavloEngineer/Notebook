@@ -24,9 +24,4 @@ data class NoteEntity(
             note.text
         )
     }
-
-
-//    @PrimaryKey(autoGenerate = true)
-//    @IgnoredOnParcel
-//    var id: Int = 0
 }

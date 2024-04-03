@@ -3,8 +3,7 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.google.devtools.ksp)
     id("kotlin-parcelize")
-//    alias(libs.plugins.google.dagger.hilt.android)
-    id("com.google.dagger.hilt.android")
+    alias(libs.plugins.google.dagger.hilt.android)
 
     // safe args
     alias(libs.plugins.navigation.safeargs.kotlin)
@@ -84,10 +83,8 @@ dependencies {
     implementation(libs.androidx.room.ktx)
 
     // Hilt
-//    implementation(libs.dagger.hilt.android)
-//    ksp(libs.dagger.hilt.compiler)
-    implementation("com.google.dagger:hilt-android:2.45")
-    ksp("com.google.dagger:hilt-compiler:2.45")
+    implementation(libs.dagger.hilt.android)
+    ksp(libs.dagger.hilt.compiler)
 }
 
 

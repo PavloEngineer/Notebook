@@ -1,7 +1,9 @@
 package com.example.notebook.data.note.repositories
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.notebook.data.database.NoteDatabase
 import com.example.notebook.data.note.accessObjects.NoteDao
 import com.example.notebook.data.note.entities.NoteEntity
 import com.example.notebook.domain.models.Note
@@ -40,10 +42,14 @@ class NoteRepositoryImpl @Inject constructor(private val noteDao: NoteDao):
     override fun getAllNotes(): LiveData<List<Note>> {
         val allNotes = notesAll.value?.map {
             it.toNote()
-        } ?: listOf()
+        }?.toMutableList() ?: mutableListOf()
+//        val note: Note = Note("Test", "asdfg")
+//        note.id = 1
+//        allNotes.add(0, note)
 
         val liveData: MutableLiveData<List<Note>> = MutableLiveData()
         liveData.value = allNotes
+        Log.d("RepositoryIMPL DAta", allNotes.toString())
 
         return liveData
     }

@@ -8,7 +8,6 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.notebook.R
-import com.example.notebook.data.Repositories
 import com.example.notebook.databinding.FragmentListNotesBinding
 import com.example.notebook.domain.models.Note
 import com.example.notebook.view.fragments.BaseFragment
@@ -36,7 +35,6 @@ SearchView.OnQueryTextListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        activity?.let { Repositories.init(it.applicationContext) }
         setupRecyclerView()
     }
 

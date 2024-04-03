@@ -1,9 +1,12 @@
 package com.example.notebook.di
 
 import android.content.Context
+import android.util.Log
 import androidx.room.Room
 import com.example.notebook.data.database.NoteDatabase
 import com.example.notebook.data.note.accessObjects.NoteDao
+import com.example.notebook.data.note.repositories.NoteRepositoryImpl
+import com.example.notebook.domain.repository.NoteRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -20,16 +23,25 @@ object DatabaseModule {
     @Provides
     @Singleton
     fun provideNoteDatabase(@ApplicationContext context: Context): NoteDatabase {
-        return Room.databaseBuilder(
-            context.applicationContext,
+        val noteDatabase = Room.databaseBuilder(
+            context,
             NoteDatabase::class.java,
             NAME_DATABASE
         ).build()
+        return noteDatabase
     }
 
     @Provides
     @Singleton
     fun provideNoteDao(noteDatabase: NoteDatabase): NoteDao {
-        return noteDatabase.getNoteDao()
+        val noteDao = noteDatabase.getNoteDao()
+        Log.d("DatabaseModule", noteDatabase.isOpen.toString())
+        return noteDao
+    }
+
+    @Provides
+    @Singleton
+    fun provideNoteRepository(noteDao: NoteDao) : NoteRepository {
+        return NoteRepositoryImpl(noteDao)
     }
 }
