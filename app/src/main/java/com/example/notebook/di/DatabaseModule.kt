@@ -18,17 +18,16 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object DatabaseModule {
 
-    private val NAME_DATABASE = "note_database"
+    private const val NAME_DATABASE = "note_database"
 
     @Provides
     @Singleton
     fun provideNoteDatabase(@ApplicationContext context: Context): NoteDatabase {
-        val noteDatabase = Room.databaseBuilder(
+        return Room.databaseBuilder(
             context,
             NoteDatabase::class.java,
             NAME_DATABASE
         ).build()
-        return noteDatabase
     }
 
     @Provides

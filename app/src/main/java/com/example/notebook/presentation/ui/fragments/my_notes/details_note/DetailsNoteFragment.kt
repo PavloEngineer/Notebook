@@ -1,4 +1,4 @@
-package com.example.notebook.view.fragments.my_notes.details_note
+package com.example.notebook.presentation.ui.fragments.my_notes.details_note
 
 import android.os.Bundle
 import android.text.Editable
@@ -8,8 +8,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.notebook.R
 import com.example.notebook.databinding.FragmentDetailsNoteBinding
-import com.example.notebook.domain.models.Note
-import com.example.notebook.view.fragments.BaseFragment
+import com.example.notebook.presentation.ui.fragments.BaseFragment
+import com.example.notebook.presentation.utils.SnackbarManager.showSnackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -52,13 +52,12 @@ class DetailsNoteFragment :
 
     private fun doActionOnDelete() {
         viewModel.deleteNote(args.note)
-        showSnackbar(getString(R.string.message_delete)) { findNavController().navigateUp() }
+        showSnackbar(requireView(), getString(R.string.message_delete)) { findNavController().navigateUp() }
     }
 
     private fun doActionOnUpdate() {
-        val note = Note(binding.editTitle.text.toString(), binding.editNote.text.toString())
-        note.id = args.note.id
-        viewModel.updateNote(note)
-        showSnackbar(getString(R.string.message_update))  { findNavController().navigateUp() }
+        val updatedNote = args.note.copy(id = args.note.id, title = binding.editTitle.text.toString(), text = binding.editNote.text.toString())
+        viewModel.updateNote(updatedNote)
+        showSnackbar(requireView(), getString(R.string.message_update))  { findNavController().navigateUp() }
     }
 }

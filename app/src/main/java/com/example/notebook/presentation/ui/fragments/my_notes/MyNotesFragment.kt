@@ -1,4 +1,4 @@
-package com.example.notebook.view.fragments.my_notes
+package com.example.notebook.presentation.ui.fragments.my_notes
 
 import android.os.Bundle
 import android.view.View
@@ -9,10 +9,10 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.notebook.R
 import com.example.notebook.databinding.FragmentListNotesBinding
-import com.example.notebook.domain.models.Note
-import com.example.notebook.view.fragments.BaseFragment
-import com.example.notebook.view.fragments.my_notes.adapter.NotesAdapter
-import com.example.notebook.view.interfaces.NotesAdapterListener
+import com.example.notebook.presentation.ui.fragments.BaseFragment
+import com.example.notebook.presentation.ui.fragments.my_notes.adapter.NotesAdapter
+import com.example.notebook.presentation.ui.interfaces.NotesAdapterForClickListener
+import com.example.notebook.presentation.ui.models.NoteUI
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -23,10 +23,10 @@ SearchView.OnQueryTextListener {
 
     private val notesAdapter by lazy {
         NotesAdapter(
-            listener = object : NotesAdapterListener {
-                override fun onRootClick(note: Note) {
+            listener = object : NotesAdapterForClickListener {
+                override fun onItemClick(noteUI: NoteUI) {
                     val direction =
-                        MyNotesFragmentDirections.actionMyNotesFragmentToDetailsNoteFragment(note)
+                        MyNotesFragmentDirections.actionMyNotesFragmentToDetailsNoteFragment(noteUI)
                     findNavController().navigate(direction)
                 }
             }

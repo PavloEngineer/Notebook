@@ -11,11 +11,9 @@ data class NoteEntity(
     val title: String,
     val text: String,
 ) {
-        fun toNote(): Note  {
-            val note = Note(this.title, this.text)
-            note.id = this.id
-            return note
-        }
+    fun toNote(): Note {
+        return Note(id, title, text)
+    }
 
     companion object {
         fun toNoteEntity(note: Note) = NoteEntity (

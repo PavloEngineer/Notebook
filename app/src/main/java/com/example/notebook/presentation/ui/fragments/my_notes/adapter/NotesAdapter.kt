@@ -1,28 +1,28 @@
-package com.example.notebook.view.fragments.my_notes.adapter
+package com.example.notebook.presentation.ui.fragments.my_notes.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.notebook.databinding.ItemNoteBinding
-import com.example.notebook.domain.models.Note
-import com.example.notebook.view.callBacks.diffutil.NoteDiffUtil
-import com.example.notebook.view.interfaces.NotesAdapterListener
+import com.example.notebook.presentation.utils.callBacks.diffutil.NoteDiffUtil
+import com.example.notebook.presentation.ui.interfaces.NotesAdapterForClickListener
+import com.example.notebook.presentation.ui.models.NoteUI
 
 class NotesAdapter (
-    val listener: NotesAdapterListener
-): ListAdapter<Note, NotesAdapter.NotesViewHolder>(NoteDiffUtil()) {
+    val listener: NotesAdapterForClickListener
+): ListAdapter<NoteUI, NotesAdapter.NotesViewHolder>(NoteDiffUtil()) {
 
     inner class NotesViewHolder(
         private val binding: ItemNoteBinding
     ): RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(note: Note) {
+        fun bind(noteUI: NoteUI) {
             with(binding) {
-                editTitle.text = note.title
-                editNote.text = note.text
+                editTitle.text = noteUI.title
+                editNote.text = noteUI.text
                 root.setOnClickListener {
-                    listener.onRootClick(note)
+                    listener.onItemClick(noteUI)
                 }
             }
         }

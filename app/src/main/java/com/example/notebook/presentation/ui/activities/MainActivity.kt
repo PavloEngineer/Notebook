@@ -1,4 +1,4 @@
-package com.example.notebook.view.activities
+package com.example.notebook.presentation.ui.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import com.example.notebook.R

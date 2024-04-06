@@ -1,21 +1,15 @@
 package com.example.notebook.data.note.repositories
 
-import android.util.Log
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import com.example.notebook.data.database.NoteDatabase
+import androidx.lifecycle.map
 import com.example.notebook.data.note.accessObjects.NoteDao
 import com.example.notebook.data.note.entities.NoteEntity
 import com.example.notebook.domain.models.Note
 import com.example.notebook.domain.repository.NoteRepository
 import javax.inject.Inject
 
-class NoteRepositoryImpl @Inject constructor(private val noteDao: NoteDao):
+class NoteRepositoryImpl @Inject constructor(private val noteDao: NoteDao) :
     NoteRepository {
-
-    private val notesAll by lazy {
-        noteDao.readAllDate()
-    }
 
     override suspend fun addNote(note: Note) {
         noteDao.addNote(NoteEntity.toNoteEntity(note))
@@ -29,28 +23,13 @@ class NoteRepositoryImpl @Inject constructor(private val noteDao: NoteDao):
         noteDao.deleteNote(NoteEntity.toNoteEntity(note))
     }
 
-     override fun searchNotesByTitle(query: String): LiveData<List<Note>>{
-         val notesByTitle: List<Note>  = noteDao.searchNotesByTitle(query).value?.map {
-             it.toNote()
-         } ?: listOf()
+    override fun searchNotesByTitle(query: String): LiveData<List<Note>> =
+        noteDao.searchNotesByTitle(query).map { list ->
+            list.map { it.toNote() }
+        }
 
-         val liveData: MutableLiveData<List<Note>> = MutableLiveData()
-         liveData.value = notesByTitle
-         return liveData
-    }
 
-    override fun getAllNotes(): LiveData<List<Note>> {
-        val allNotes = notesAll.value?.map {
-            it.toNote()
-        }?.toMutableList() ?: mutableListOf()
-//        val note: Note = Note("Test", "asdfg")
-//        note.id = 1
-//        allNotes.add(0, note)
-
-        val liveData: MutableLiveData<List<Note>> = MutableLiveData()
-        liveData.value = allNotes
-        Log.d("RepositoryIMPL DAta", allNotes.toString())
-
-        return liveData
+    override fun getAllNotes(): LiveData<List<Note>> = noteDao.readAllDate().map { list ->
+        list.map { it.toNote() }
     }
 }

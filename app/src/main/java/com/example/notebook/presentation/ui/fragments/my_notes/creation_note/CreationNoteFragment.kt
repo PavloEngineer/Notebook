@@ -1,13 +1,11 @@
-package com.example.notebook.view.fragments.my_notes.creation_note
+package com.example.notebook.presentation.ui.fragments.my_notes.creation_note
 
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.notebook.R
-import com.example.notebook.data.note.entities.NoteEntity
 import com.example.notebook.databinding.FragmentAddNoteBinding
-import com.example.notebook.domain.models.Note
-import com.example.notebook.view.fragments.BaseFragment
+import com.example.notebook.presentation.ui.fragments.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -30,8 +28,7 @@ class CreationNoteFragment : BaseFragment<FragmentAddNoteBinding>(FragmentAddNot
     private fun saveNote() {
         with(binding) {
             if (!isNoteEmpty()) {
-                val note = Note(editTitle.text.toString(), editNote.text.toString())
-                viewModel.addNote(note)
+                viewModel.addNote(editTitle.text.toString(), editNote.text.toString())
                 findNavController().navigateUp()
             } else {
                 Toast.makeText(
@@ -44,5 +41,5 @@ class CreationNoteFragment : BaseFragment<FragmentAddNoteBinding>(FragmentAddNot
     }
 
     private fun isNoteEmpty(): Boolean =
-        binding.editTitle.text.isNullOrEmpty() && binding.editNote.text.isNullOrEmpty()
+        binding.editTitle.text.isNullOrEmpty() || binding.editNote.text.isNullOrEmpty()
 }

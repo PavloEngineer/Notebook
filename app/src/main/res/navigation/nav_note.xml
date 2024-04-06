@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/myNotesFragment"
-        android:name="com.example.notebook.view.fragments.my_notes.MyNotesFragment"
+        android:name="com.example.notebook.presentation.ui.fragments.my_notes.MyNotesFragment"
         android:label="MyNotesFragment" >
         <action
             android:id="@+id/action_myNotesFragment_to_addingNoteFragment"
@@ -25,7 +25,7 @@
     </fragment>
     <fragment
         android:id="@+id/addingNoteFragment"
-        android:name="com.example.notebook.view.fragments.my_notes.creation_note.CreationNoteFragment"
+        android:name="com.example.notebook.presentation.ui.fragments.my_notes.creation_note.CreationNoteFragment"
         android:label="AddingNoteFragment" >
         <action
             android:id="@+id/action_addingNoteFragment_to_myNotesFragment"
@@ -37,7 +37,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailsNoteFragment"
-        android:name="com.example.notebook.view.fragments.my_notes.details_note.DetailsNoteFragment"
+        android:name="com.example.notebook.presentation.ui.fragments.my_notes.details_note.DetailsNoteFragment"
         android:label="DetailsNoteFragment" >
         <action
             android:id="@+id/action_detailsNoteFragment_to_myNotesFragment"
@@ -48,6 +48,6 @@
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <argument
             android:name="note"
-            app:argType="com.example.notebook.domain.models.Note" />
+            app:argType="com.example.notebook.presentation.ui.models.NoteUI" />
     </fragment>
 </navigation>
