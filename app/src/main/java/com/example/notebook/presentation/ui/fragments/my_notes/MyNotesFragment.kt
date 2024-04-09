@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,6 +15,7 @@ import com.example.notebook.presentation.ui.fragments.my_notes.adapter.NotesAdap
 import com.example.notebook.presentation.ui.interfaces.NotesAdapterForClickListener
 import com.example.notebook.presentation.ui.models.NoteUI
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MyNotesFragment: BaseFragment<FragmentListNotesBinding>(FragmentListNotesBinding::inflate),
@@ -40,8 +42,13 @@ SearchView.OnQueryTextListener {
 
     override fun onStart() {
         super.onStart()
-        viewModel.notes.observe(viewLifecycleOwner) {
-            notesAdapter.submitList(it)
+//        viewModel.allNotes.observe(viewLifecycleOwner) {
+//            notesAdapter.submitList(it)
+//        }
+        lifecycleScope.launch {
+            viewModel.allNotes.collect { notes ->
+                notesAdapter.submitList(notes)
+            }
         }
     }
 
@@ -82,8 +89,13 @@ SearchView.OnQueryTextListener {
 
     private fun searchNotes(query: String?) {
         query?.let {
-            viewModel.searchNotesByTitle(query).observe(this) { list ->
-                notesAdapter.submitList(list)
+//            viewModel.searchNotesByTitle(query).observe(this) { list ->
+//                notesAdapter.submitList(list)
+//            }
+            lifecycleScope.launch {
+                viewModel.searchNotesByTitle(query).collect { notes ->
+                    notesAdapter.submitList(notes)
+                }
             }
         }
     }

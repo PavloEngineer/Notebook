@@ -1,7 +1,6 @@
 package com.example.notebook.di
 
 import android.content.Context
-import android.util.Log
 import androidx.room.Room
 import com.example.notebook.data.database.NoteDatabase
 import com.example.notebook.data.note.accessObjects.NoteDao
@@ -33,9 +32,7 @@ object DatabaseModule {
     @Provides
     @Singleton
     fun provideNoteDao(noteDatabase: NoteDatabase): NoteDao {
-        val noteDao = noteDatabase.getNoteDao()
-        Log.d("DatabaseModule", noteDatabase.isOpen.toString())
-        return noteDao
+        return noteDatabase.getNoteDao()
     }
 
     @Provides
