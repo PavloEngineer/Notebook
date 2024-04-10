@@ -42,9 +42,6 @@ SearchView.OnQueryTextListener {
 
     override fun onStart() {
         super.onStart()
-//        viewModel.allNotes.observe(viewLifecycleOwner) {
-//            notesAdapter.submitList(it)
-//        }
         lifecycleScope.launch {
             viewModel.allNotes.collect { notes ->
                 notesAdapter.submitList(notes)
