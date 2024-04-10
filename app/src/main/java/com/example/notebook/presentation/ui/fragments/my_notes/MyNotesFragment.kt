@@ -89,9 +89,6 @@ SearchView.OnQueryTextListener {
 
     private fun searchNotes(query: String?) {
         query?.let {
-//            viewModel.searchNotesByTitle(query).observe(this) { list ->
-//                notesAdapter.submitList(list)
-//            }
             lifecycleScope.launch {
                 viewModel.searchNotesByTitle(query).collect { notes ->
                     notesAdapter.submitList(notes)

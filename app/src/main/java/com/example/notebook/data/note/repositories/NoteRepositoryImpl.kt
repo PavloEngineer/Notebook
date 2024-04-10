@@ -1,7 +1,6 @@
 package com.example.notebook.data.note.repositories
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.map
+
 import com.example.notebook.data.note.accessObjects.NoteDao
 import com.example.notebook.data.note.entities.NoteEntity
 import com.example.notebook.domain.models.Note
