@@ -45,7 +45,6 @@ SearchView.OnQueryTextListener {
 
     override fun onStart() {
         super.onStart()
-
         viewModel.allNotes.flowWithLifecycle(viewLifecycleOwner.lifecycle)
             .onEach { data ->
                 notesAdapter.submitList(data)
