@@ -7,7 +7,7 @@ import javax.inject.Inject
 
 class SearchNoteUseCase @Inject constructor(private val noteRepository: NoteRepository) {
 
-    fun invoke(query: String): Flow<List<Note>> {
+    operator fun invoke(query: String): Flow<List<Note>> {
         return noteRepository.searchNotesByTitle(query)
     }
 }

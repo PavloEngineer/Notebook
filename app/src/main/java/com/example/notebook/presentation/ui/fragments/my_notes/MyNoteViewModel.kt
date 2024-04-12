@@ -1,17 +1,13 @@
 package com.example.notebook.presentation.ui.fragments.my_notes
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.example.notebook.data.database.NoteDatabase
 import com.example.notebook.domain.use_cases.GetNotesUseCase
 import com.example.notebook.domain.use_cases.SearchNoteUseCase
 import com.example.notebook.presentation.ui.models.NoteUI
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -21,23 +17,11 @@ class MyNoteViewModel @Inject constructor(
     private val getNotesUseCase: GetNotesUseCase
 ): ViewModel() {
 
-    private val _allNotes = MutableStateFlow<List<NoteUI>>(emptyList())
-    val allNotes: StateFlow<List<NoteUI>> = _allNotes
-
-    init {
-        takeAllNotes()
-    }
-
-    private fun takeAllNotes() {
-        viewModelScope.launch {
-            getNotesUseCase.invoke().collect { list ->
-                _allNotes.value = list.map { NoteUI.toNoteUI(it) }
-            }
-        }
-    }
+    private val _allNotes: Flow<List<NoteUI>> = getNotesUseCase().map { list -> list.map {NoteUI.toNoteUI(it) } }
+    val allNotes: Flow<List<NoteUI>> = _allNotes
 
     fun searchNotesByTitle(query: String): Flow<List<NoteUI>> {
-        return searchNoteUseCase.invoke(query).map { list -> list.map { NoteUI.toNoteUI(it) } }
+        return searchNoteUseCase(query).map { list -> list.map { NoteUI.toNoteUI(it) } }
     }
 
     override fun onCleared() {

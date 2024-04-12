@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
@@ -15,6 +16,8 @@ import com.example.notebook.presentation.ui.fragments.my_notes.adapter.NotesAdap
 import com.example.notebook.presentation.ui.interfaces.NotesAdapterForClickListener
 import com.example.notebook.presentation.ui.models.NoteUI
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -42,14 +45,12 @@ SearchView.OnQueryTextListener {
 
     override fun onStart() {
         super.onStart()
-//        viewModel.allNotes.observe(viewLifecycleOwner) {
-//            notesAdapter.submitList(it)
-//        }
-        lifecycleScope.launch {
-            viewModel.allNotes.collect { notes ->
-                notesAdapter.submitList(notes)
+
+        viewModel.allNotes.flowWithLifecycle(viewLifecycleOwner.lifecycle)
+            .onEach { data ->
+                notesAdapter.submitList(data)
             }
-        }
+            .launchIn(viewLifecycleOwner.lifecycleScope)
     }
 
     override fun setListeners() {

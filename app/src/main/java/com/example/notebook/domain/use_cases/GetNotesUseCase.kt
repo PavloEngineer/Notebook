@@ -7,7 +7,7 @@ import javax.inject.Inject
 
 class GetNotesUseCase @Inject constructor (private val noteRepository: NoteRepository) {
 
-    fun invoke(): Flow<List<Note>> {
+    operator fun invoke(): Flow<List<Note>> {
         return noteRepository.getAllNotes()
     }
 }
