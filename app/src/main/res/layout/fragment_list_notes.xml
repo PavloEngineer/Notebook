@@ -52,7 +52,7 @@
         app:layout_constraintStart_toStartOf="@id/viewMenu"
         app:layout_constraintEnd_toEndOf="@id/viewMenu"
         app:layout_constraintTop_toTopOf="@id/viewMenu"
-        app:layout_constraintBottom_toBottomOf="@id/viewMenu"/>
+        app:layout_constraintBottom_toBottomOf="@id/viewMenu" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerNotes"

@@ -19,11 +19,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/ic_arrow"
-        android:layout_marginStart="@dimen/small_margin"
-        android:paddingTop="@dimen/small_padding"
+        android:contentDescription="@string/back_arrow"
         app:layout_constraintBottom_toBottomOf="@id/viewMenu"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintTop_toTopOf="@id/viewMenu"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/textHeader"
+        app:layout_constraintHorizontal_bias="0.1"/>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textHeader"
@@ -38,11 +39,12 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imageListNote"
-        android:layout_width="@dimen/width_form_note"
+        android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginVertical="@dimen/small_margin"
         android:scaleType="centerCrop"
         android:src="@drawable/ic_note"
-        android:layout_marginVertical="@dimen/small_margin"
+        android:layout_marginHorizontal="@dimen/small_margin"
         app:layout_constraintBottom_toTopOf="@id/buttonSave"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -52,7 +54,7 @@
         android:id="@+id/editTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/label_title"
+        android:hint="@string/label_title"
         android:theme="@style/TitleStyle"
         android:layout_marginTop="@dimen/small_margin"
         android:layout_marginHorizontal="@dimen/small_margin"
@@ -65,7 +67,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:fontFamily="@font/garamond_pro_regular"
-        android:text="@string/label_text"
+        android:hint="@string/label_text"
         android:textColor="@color/black"
         android:textSize="@dimen/size_text"
         android:layout_margin="@dimen/small_margin"

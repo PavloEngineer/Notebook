@@ -11,8 +11,6 @@
 
     <!-- Width and height -->
     <dimen name="height_actionBar">80dp</dimen>
-    <dimen name="width_form_note">330dp</dimen>
-    <dimen name="width_large_button">200dp</dimen>
     <dimen name="width_button">150dp</dimen>
     <dimen name="width_button_search">250dp</dimen>
     <dimen name="size_button_add">100dp</dimen>

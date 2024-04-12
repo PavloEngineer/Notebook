@@ -6,23 +6,24 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
-import com.example.notebook.data.note.entities.Note
+import com.example.notebook.data.note.entities.NoteEntity
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface NoteDao {
 
     @Insert
-    suspend fun addNote(note: Note)
+    suspend fun addNote(note: NoteEntity)
 
     @Query("SELECT * FROM note")
-    fun readAllDate(): LiveData<List<Note>>
+    fun readAllDate(): Flow<List<NoteEntity>>
 
     @Update
-    suspend fun updateNote(note: Note)
+    suspend fun updateNote(note: NoteEntity)
 
     @Delete
-    suspend fun deleteNote(note: Note)
+    suspend fun deleteNote(note: NoteEntity)
 
     @Query("SELECT * FROM note WHERE title LIKE '%' || :query || '%'")
-    fun searchNotesByTitle(query: String): LiveData<List<Note>>
+    fun searchNotesByTitle(query: String): Flow<List<NoteEntity>>
 }
